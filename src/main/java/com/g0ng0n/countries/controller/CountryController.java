@@ -1,6 +1,7 @@
 package com.g0ng0n.countries.controller;
 
 import com.g0ng0n.countries.data.CountryRepository;
+import com.g0ng0n.countries.model.Country;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,7 +21,7 @@ public class CountryController {
     @RequestMapping(value = "/countries")
     public String listCategories(ModelMap modelMap){
         List<Country> list = countryRepository.getAllCountries();
-        modelMap.put("categories", list);
-        return "categories";
+        modelMap.put("countries", list);
+        return "countries";
     }
 }
