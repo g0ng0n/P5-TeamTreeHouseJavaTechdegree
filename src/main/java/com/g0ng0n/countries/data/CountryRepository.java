@@ -1,10 +1,13 @@
 package com.g0ng0n.countries.data;
 
+import com.g0ng0n.countries.exceptions.NotFoundException;
 import com.g0ng0n.countries.model.Country;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by g0ng0n.
@@ -25,25 +28,22 @@ public class CountryRepository {
         return ALL_COUNTRIES;
     }
 
-    public Country findById(int id) {
-
-        for(Country country : ALL_COUNTRIES){
-            if(country.getId() == id){
-                return country;
-            }
-        }
-        return null;
-
+    public List<Country> getAllCountriesSortedByPopulation() {
+        return ALL_COUNTRIES.stream()
+                .sorted(Comparator.comparing(Country::getPopulation))
+                .collect(Collectors.toList());
     }
 
+    public List<Country> getAllCountriesSortedByName() {
+        return ALL_COUNTRIES.stream()
+                .sorted(Comparator.comparing(Country::getName))
+                .collect(Collectors.toList());
+    }
+
+
     public Country findByName(String name) {
-
-        for(Country country : ALL_COUNTRIES){
-            if(country.getName().equals(name)){
-                return country;
-            }
-        }
-        return null;
-
+        return ALL_COUNTRIES.stream().filter(country -> country.getName().equals(name))
+                .findFirst()
+                .orElseThrow(NotFoundException::new);
     }
 }
