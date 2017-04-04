@@ -19,11 +19,11 @@ public class CountryController {
     @Autowired
     private CountryRepository countryRepository;
 
-    @RequestMapping(value = "/countries")
+    @RequestMapping(value = "/")
     public String listCategories(ModelMap modelMap){
         List<Country> list = countryRepository.getAllCountries();
         modelMap.put("countries", list);
-        return "countries";
+        return "index";
     }
 
     @RequestMapping("/countries/{id}")

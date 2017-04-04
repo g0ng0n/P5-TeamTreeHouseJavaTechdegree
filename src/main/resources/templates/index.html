@@ -15,11 +15,9 @@
 
 
 <div class="container">
-
-
         <div class="country" th:each="country : ${countries}">
-            <a th:href="@{'/country/' + ${gif.name}}">
-                <img th:src="@{'/flags/' + ${country.name} + '.png'}" />
+            <a th:href="@{'/country/' + ${country.name}}">
+                <img th:src="@{'/flags/' + ${country.name.toLowerCase()} + '.png'}" />
             </a>
         </div>
 
