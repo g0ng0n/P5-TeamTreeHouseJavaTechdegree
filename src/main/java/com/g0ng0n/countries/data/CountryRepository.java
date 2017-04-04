@@ -25,4 +25,14 @@ public class CountryRepository {
         return ALL_COUNTRIES;
     }
 
+    public Country findById(int id) {
+
+        for(Country country : ALL_COUNTRIES){
+            if(country.getId() == id){
+                return country;
+            }
+        }
+        return null;
+
+    }
 }
