@@ -35,4 +35,15 @@ public class CountryRepository {
         return null;
 
     }
+
+    public Country findByName(String name) {
+
+        for(Country country : ALL_COUNTRIES){
+            if(country.getName().equals(name)){
+                return country;
+            }
+        }
+        return null;
+
+    }
 }
