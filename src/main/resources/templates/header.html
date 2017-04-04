@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:fragment="header">
+    <div class="container">
+        <h1><a href="/">Countries of the World</a></h1>
+        <ul class="nav-menu-header">
+            <li><a href="/?sort=name" th:href="@{/(sort=name)}">Sort By Name</a></li>
+            <li><a href="/?sort=population" th:href="@{/(sort=population)}">Sort By Population</a></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+
+</html>
